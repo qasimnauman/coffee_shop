@@ -18,8 +18,8 @@ class CoffeeModel {
       name: json['name']! as String,
       image: json['image']! as String,
       price: json['price']! as double,
-      description: json['description']! as String,
-      isfav : json['isfavourite'] as bool,
+      description: json['descrption']! as String,
+      isfav : json['isfav']! as bool,
   );
 
   Map<String, Object> toJson()
@@ -28,8 +28,8 @@ class CoffeeModel {
       'name': name,
       'image': image,
       'price': price,
-      'description': description,
-      'isfavourite' : isfav,
+      'descrption': description,
+      'isfav': isfav
     };
   }
 }

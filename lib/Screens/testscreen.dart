@@ -37,10 +37,10 @@ class Testing extends StatelessWidget {
                           Text(coffee.name),
                           Text(coffee.price.toString()),
                           Text(coffee.image),
-                          Text(coffee.isfav.toString()),
+                          Text(coffee.description),
+                          Text(coffee.isfav.toString())
                         ],
                       ),
-                      subtitle: Text(coffee.description),
                     );
                   },
                 );
