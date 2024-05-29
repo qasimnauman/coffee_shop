@@ -72,9 +72,8 @@ class _DetailsPopupState extends State<DetailsPopup> {
               IconButton(
                 onPressed: () {
                   setState(() {
-                    isLiked = !isLiked; // Toggle liked state
+                    isLiked = !isLiked;
                   });
-                  // Optional: Add functionality for liking the coffee here
                 },
                 icon: Icon(
                   isLiked ? BootstrapIcons.heart_fill : BootstrapIcons.heart,
