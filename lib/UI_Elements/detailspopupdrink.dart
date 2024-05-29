@@ -1,4 +1,5 @@
 import 'package:bootstrap_icons/bootstrap_icons.dart';
+import 'package:coffee_shop/Models/coffeemodel.dart';
 import 'package:coffee_shop/Models/colddrinksmodel.dart';
 import 'package:coffee_shop/Services/database_service.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +16,16 @@ class DetailsPopupDrink extends StatefulWidget {
 }
 
 class _DetailsPopupState extends State<DetailsPopupDrink> {
-  bool isLiked = false; // State variable to track liked state
+  bool? isLiked;
 
   final ColdDrinkDBService _databaseService = ColdDrinkDBService();
+
+  @override
+  void initState() {
+    super.initState();
+    isLiked = widget.item.isfav;
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -76,12 +84,12 @@ class _DetailsPopupState extends State<DetailsPopupDrink> {
               IconButton(
                 onPressed: () {
                   setState(() {
-                    isLiked = !isLiked;
+                    isLiked = !isLiked!;
                   });
-                  _databaseService.updateLike(widget.id, isLiked);
+                  _databaseService.updateLike(widget.id, isLiked!);
                 },
                 icon: Icon(
-                  isLiked ? BootstrapIcons.heart_fill : BootstrapIcons.heart,
+                  isLiked! ? BootstrapIcons.heart_fill : BootstrapIcons.heart,
                   color: Colors.black,
                 ),
               ),

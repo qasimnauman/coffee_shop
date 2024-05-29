@@ -15,9 +15,15 @@ class DetailsPopup extends StatefulWidget {
 }
 
 class _DetailsPopupState extends State<DetailsPopup> {
-  bool isLiked = false; // State variable to track liked state
+  bool? isLiked;
 
   final DatabaseService _databaseService = DatabaseService();
+
+  @override
+  void initState() {
+    super.initState();
+    isLiked = widget.item.isfav;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,18 +82,17 @@ class _DetailsPopupState extends State<DetailsPopup> {
               IconButton(
                 onPressed: () {
                   setState(() {
-                    isLiked = !isLiked;
+                    isLiked = !isLiked!;
                   });
-                  _databaseService.updateLike(widget.id, isLiked);
+                  _databaseService.updateLike(widget.id, isLiked!);
                 },
                 icon: Icon(
-                  isLiked ? BootstrapIcons.heart_fill : BootstrapIcons.heart,
+                  isLiked! ? BootstrapIcons.heart_fill : BootstrapIcons.heart,
                   color: Colors.black,
                 ),
               ),
               ElevatedButton(
                 onPressed: () {
-                  // Add to cart functionality here
                 },
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
