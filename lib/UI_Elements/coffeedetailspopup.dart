@@ -75,7 +75,6 @@ class _DetailsPopupState extends State<DetailsPopup> {
                     isLiked = !isLiked; // Toggle liked state
                   });
                   // Optional: Add functionality for liking the coffee here
-                  print('Coffee ${isLiked ? 'Liked' : 'Unliked'}!');
                 },
                 icon: Icon(
                   isLiked ? BootstrapIcons.heart_fill : BootstrapIcons.heart,
