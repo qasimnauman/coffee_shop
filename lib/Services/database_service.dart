@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_shop/Models/coffeemodel.dart';
+import 'package:coffee_shop/Models/colddrinksmodel.dart';
 
 const String coffeeCollection = 'Coffee';
 
@@ -32,8 +33,8 @@ class ColdDrinkDBService {
   late final CollectionReference _colddrinkref;
 
   ColdDrinkDBService() {
-    _colddrinkref = _firestore.collection('ColdDrinks').withConverter<CoffeeModel>(
-      fromFirestore: (snapshot, _) => CoffeeModel.fromJson(snapshot.data()!),
+    _colddrinkref = _firestore.collection('ColdDrinks').withConverter<ColdDrinkModel>(
+      fromFirestore: (snapshot, _) => ColdDrinkModel.fromJson(snapshot.data()!),
       toFirestore: (coffee, _) => coffee.toJson(),
     );
   }
@@ -42,7 +43,11 @@ class ColdDrinkDBService {
     return _colddrinkref.snapshots();
   }
 
-  void addColdDrink(CoffeeModel coffee) {
-    _colddrinkref.add(coffee);
+  void addColdDrink(ColdDrinkModel colddrink) {
+    _colddrinkref.add(colddrink);
+  }
+
+  void updateLike(String coldid, bool isliked){
+    _colddrinkref.doc(coldid).update({'isfav': isliked});
   }
 }

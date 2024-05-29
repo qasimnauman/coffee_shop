@@ -1,7 +1,7 @@
 import 'package:bootstrap_icons/bootstrap_icons.dart';
-import 'package:coffee_shop/Models/coffeemodel.dart';
+import 'package:coffee_shop/Models/colddrinksmodel.dart';
 import 'package:coffee_shop/Services/database_service.dart';
-import 'package:coffee_shop/UI_Elements/detailspopup.dart';
+import 'package:coffee_shop/UI_Elements/detailspopupdrink.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -40,7 +40,7 @@ class _CardColdDrinkState extends State<CardColdDrink> {
             ),
             itemCount: colddrinks.length,
             itemBuilder: (context, index) {
-              CoffeeModel colddrink = colddrinks[index].data();
+              ColdDrinkModel colddrink = colddrinks[index].data();
               String colddrinkid = colddrinks[index].id;
               return Padding(
                 padding: const EdgeInsets.only(top: 10),
@@ -64,7 +64,10 @@ class _CardColdDrinkState extends State<CardColdDrink> {
                                     showDialog(
                                       context: context,
                                       builder: (BuildContext context) {
-                                        return DetailsPopup(item: colddrink, id: colddrinkid,);
+                                        return DetailsPopupDrink(
+                                          item: colddrink,
+                                          id: colddrinkid,
+                                        );
                                       },
                                     );
                                   },

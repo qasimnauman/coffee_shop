@@ -35,5 +35,4 @@ class CoffeeModel {
     };
   }
 
-  static fromDocument(QueryDocumentSnapshot<Object?> doc) {}
 }

@@ -1,7 +1,7 @@
 import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:coffee_shop/Models/coffeemodel.dart';
 import 'package:coffee_shop/Services/database_service.dart';
-import 'package:coffee_shop/UI_Elements/detailspopup.dart';
+import 'package:coffee_shop/UI_Elements/detailspopupcoffee.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
