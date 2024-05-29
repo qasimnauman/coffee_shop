@@ -21,6 +21,10 @@ class DatabaseService {
   void addCoffee(CoffeeModel coffee) {
     _coffeeref.add(coffee);
   }
+
+  void updateLike(String coffeeid, bool isliked){
+    _coffeeref.doc(coffeeid).update({'isfav': isliked});
+  }
 }
 
 class ColdDrinkDBService {

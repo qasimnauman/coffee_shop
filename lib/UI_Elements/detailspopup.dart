@@ -1,12 +1,14 @@
 import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:coffee_shop/Models/coffeemodel.dart';
+import 'package:coffee_shop/Services/database_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DetailsPopup extends StatefulWidget {
   final CoffeeModel item;
+  final String id;
 
-  const DetailsPopup({super.key, required this.item});
+  const DetailsPopup({super.key, required this.item, required this.id});
 
   @override
   _DetailsPopupState createState() => _DetailsPopupState();
@@ -14,6 +16,8 @@ class DetailsPopup extends StatefulWidget {
 
 class _DetailsPopupState extends State<DetailsPopup> {
   bool isLiked = false; // State variable to track liked state
+
+  final DatabaseService _databaseService = DatabaseService();
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +78,7 @@ class _DetailsPopupState extends State<DetailsPopup> {
                   setState(() {
                     isLiked = !isLiked;
                   });
+                  _databaseService.updateLike(widget.id, isLiked);
                 },
                 icon: Icon(
                   isLiked ? BootstrapIcons.heart_fill : BootstrapIcons.heart,

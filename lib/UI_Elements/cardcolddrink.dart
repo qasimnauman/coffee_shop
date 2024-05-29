@@ -41,6 +41,7 @@ class _CardColdDrinkState extends State<CardColdDrink> {
             itemCount: colddrinks.length,
             itemBuilder: (context, index) {
               CoffeeModel colddrink = colddrinks[index].data();
+              String colddrinkid = colddrinks[index].id;
               return Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: Card(
@@ -63,7 +64,7 @@ class _CardColdDrinkState extends State<CardColdDrink> {
                                     showDialog(
                                       context: context,
                                       builder: (BuildContext context) {
-                                        return DetailsPopup(item: colddrink);
+                                        return DetailsPopup(item: colddrink, id: colddrinkid,);
                                       },
                                     );
                                   },

@@ -36,6 +36,7 @@ class CardCoffee extends StatelessWidget {
             itemCount: coffeeItems.length,
             itemBuilder: (context, index) {
               CoffeeModel coffee = coffeeItems[index].data();
+              String coffeeid = coffeeItems[index].id;
               return Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: Card(
@@ -58,7 +59,7 @@ class CardCoffee extends StatelessWidget {
                                     showDialog(
                                       context: context,
                                       builder: (BuildContext context) {
-                                        return DetailsPopup(item: coffee);
+                                        return DetailsPopup(item: coffee, id: coffeeid,);
                                       },
                                     );
                                   },
