@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class CoffeeModel {
   String name;
   String image;
@@ -32,4 +34,6 @@ class CoffeeModel {
       'isfav': isfav
     };
   }
+
+  static fromDocument(QueryDocumentSnapshot<Object?> doc) {}
 }

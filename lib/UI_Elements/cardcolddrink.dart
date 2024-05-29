@@ -5,15 +5,20 @@ import 'package:coffee_shop/UI_Elements/coffeedetailspopup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Cardtab extends StatelessWidget {
-  Cardtab({super.key});
+class CardColdDrink extends StatefulWidget {
+  const CardColdDrink({super.key});
 
-  final DatabaseService _databaseService = DatabaseService();
+  @override
+  State<CardColdDrink> createState() => _CardColdDrinkState();
+}
+
+class _CardColdDrinkState extends State<CardColdDrink> {
+  final ColdDrinkDBService _databaseService = ColdDrinkDBService();
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: _databaseService.getCoffee(),
+      stream: _databaseService.getColdDrink(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
@@ -22,7 +27,7 @@ class Cardtab extends StatelessWidget {
         } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
           return const Center(child: Text('No Coffee Items'));
         } else {
-          List coffeeItems = snapshot.data!.docs;
+          List colddrinks = snapshot.data!.docs;
 
           return GridView.builder(
             shrinkWrap: false,
@@ -33,9 +38,9 @@ class Cardtab extends StatelessWidget {
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
             ),
-            itemCount: coffeeItems.length,
+            itemCount: colddrinks.length,
             itemBuilder: (context, index) {
-              CoffeeModel coffee = coffeeItems[index].data();
+              CoffeeModel colddrink = colddrinks[index].data();
               return Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: Card(
@@ -58,7 +63,7 @@ class Cardtab extends StatelessWidget {
                                     showDialog(
                                       context: context,
                                       builder: (BuildContext context) {
-                                        return CoffeeDetailsPopup(item: coffee);
+                                        return DetailsPopup(item: colddrink);
                                       },
                                     );
                                   },
@@ -69,7 +74,7 @@ class Cardtab extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       borderRadius: const BorderRadius.all(Radius.circular(10)),
                                       image: DecorationImage(
-                                        image: NetworkImage(coffee.image),
+                                        image: NetworkImage(colddrink.image),
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -87,7 +92,7 @@ class Cardtab extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      coffee.name,
+                                      colddrink.name,
                                       style: GoogleFonts.sourceSans3(
                                         fontSize: 20,
                                         fontWeight: FontWeight.w600,
@@ -114,17 +119,8 @@ class Cardtab extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'With Chocolate',
-                                      style: GoogleFonts.sourceSans3(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w400,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ],
+                                const SizedBox(
+                                  height: 25,
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -133,7 +129,7 @@ class Cardtab extends StatelessWidget {
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          '\$${coffee.price}',
+                                          '\$${colddrink.price}',
                                           style: GoogleFonts.sourceSans3(
                                             fontSize: 20,
                                             fontWeight: FontWeight.w600,
@@ -142,7 +138,7 @@ class Cardtab extends StatelessWidget {
                                         ),
                                         GestureDetector(
                                           onTap: () {
-                                            // Add your onTap functionality here
+                                            
                                           },
                                           child: Container(
                                             margin: const EdgeInsets.only(right: 10, bottom: 10),

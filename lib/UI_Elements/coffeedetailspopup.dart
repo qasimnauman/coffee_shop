@@ -1,11 +1,19 @@
+import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:coffee_shop/Models/coffeemodel.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CoffeeDetailsPopup extends StatelessWidget {
+class DetailsPopup extends StatefulWidget {
   final CoffeeModel item;
 
-  const CoffeeDetailsPopup({super.key, required this.item});
+  const DetailsPopup({super.key, required this.item});
+
+  @override
+  _DetailsPopupState createState() => _DetailsPopupState();
+}
+
+class _DetailsPopupState extends State<DetailsPopup> {
+  bool isLiked = false; // State variable to track liked state
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +24,7 @@ class CoffeeDetailsPopup extends StatelessWidget {
       ),
       contentPadding: const EdgeInsets.all(10),
       title: Text(
-        item.name,
+        widget.item.name,
         style: GoogleFonts.sourceSans3(
           fontSize: 20,
           fontWeight: FontWeight.w600,
@@ -31,7 +39,7 @@ class CoffeeDetailsPopup extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             color: Colors.grey.shade200, // Placeholder color
             image: DecorationImage(
-              image: NetworkImage(item.image),
+              image: NetworkImage(widget.item.image),
               fit: BoxFit.cover,
             ),
           ),
@@ -39,7 +47,7 @@ class CoffeeDetailsPopup extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            item.description,
+            widget.item.description,
             style: GoogleFonts.sourceSans3(
               fontSize: 14,
               fontWeight: FontWeight.w400,
@@ -54,10 +62,23 @@ class CoffeeDetailsPopup extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '\$${item.price.toStringAsFixed(2)}',
+                '\$${widget.item.price.toStringAsFixed(2)}',
                 style: GoogleFonts.sourceSans3(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
+                  color: Colors.black,
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    isLiked = !isLiked; // Toggle liked state
+                  });
+                  // Optional: Add functionality for liking the coffee here
+                  print('Coffee ${isLiked ? 'Liked' : 'Unliked'}!');
+                },
+                icon: Icon(
+                  isLiked ? BootstrapIcons.heart_fill : BootstrapIcons.heart,
                   color: Colors.black,
                 ),
               ),

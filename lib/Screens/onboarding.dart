@@ -1,4 +1,5 @@
-import 'package:coffee_shop/UI_Elements/cards.dart';
+import 'package:coffee_shop/UI_Elements/cardcoffee.dart';
+import 'package:coffee_shop/UI_Elements/cardcolddrink.dart';
 import 'package:coffee_shop/UI_Elements/dataitem.dart';
 import 'package:coffee_shop/Screens/tab_item.dart';
 import 'package:flutter/material.dart';
@@ -301,8 +302,8 @@ final List<DataItemDetail> coldDrinksDetails = [
                       Expanded(
                         child: TabBarView(
                           children: [
-                            Cardtab(),
-                            Cardtab(),
+                            CardCoffee(),
+                            CardColdDrink(),
                           ],
                         ),
                       ),
