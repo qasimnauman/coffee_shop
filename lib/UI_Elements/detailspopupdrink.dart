@@ -1,5 +1,4 @@
 import 'package:bootstrap_icons/bootstrap_icons.dart';
-import 'package:coffee_shop/Models/coffeemodel.dart';
 import 'package:coffee_shop/Models/colddrinksmodel.dart';
 import 'package:coffee_shop/Services/database_service.dart';
 import 'package:flutter/material.dart';
