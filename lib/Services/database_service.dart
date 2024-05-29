@@ -22,3 +22,23 @@ class DatabaseService {
     _coffeeref.add(coffee);
   }
 }
+
+class ColdDrinkDBService {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  late final CollectionReference _colddrinkref;
+
+  ColdDrinkDBService() {
+    _colddrinkref = _firestore.collection('ColdDrinks').withConverter<CoffeeModel>(
+      fromFirestore: (snapshot, _) => CoffeeModel.fromJson(snapshot.data()!),
+      toFirestore: (coffee, _) => coffee.toJson(),
+    );
+  }
+
+  Stream<QuerySnapshot> getColdDrink() {
+    return _colddrinkref.snapshots();
+  }
+
+  void addColdDrink(CoffeeModel coffee) {
+    _colddrinkref.add(coffee);
+  }
+}

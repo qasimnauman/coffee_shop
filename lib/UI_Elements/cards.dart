@@ -69,7 +69,7 @@ class Cardtab extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       borderRadius: const BorderRadius.all(Radius.circular(10)),
                                       image: DecorationImage(
-                                        image: AssetImage(coffee.image),
+                                        image: NetworkImage(coffee.image),
                                         fit: BoxFit.cover,
                                       ),
                                     ),

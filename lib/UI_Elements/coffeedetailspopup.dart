@@ -31,7 +31,7 @@ class CoffeeDetailsPopup extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             color: Colors.grey.shade200, // Placeholder color
             image: DecorationImage(
-              image: AssetImage(item.image),
+              image: NetworkImage(item.image),
               fit: BoxFit.cover,
             ),
           ),
