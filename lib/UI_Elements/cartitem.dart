@@ -1,6 +1,5 @@
 import 'package:bootstrap_icons/bootstrap_icons.dart';
-import 'package:coffee_shop/Services/cartservice.dart'; // Replace with your cart service
-import 'package:coffee_shop/UI_Elements/dataitem.dart'; // Replace with your data item model
+import 'package:coffee_shop/UI_Elements/dataitem.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
