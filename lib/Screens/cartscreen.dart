@@ -16,6 +16,14 @@ class _CartScreenState extends State<CartScreen> {
   int noOfCups = 0;
   bool isLoading = false;
 
+  void handleRemoveItem(DataItemDetail item) {
+    cartService.removeItem(item);
+
+    setState(() {
+      cartService.removeItem(item);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     List<DataItemDetail> cartItems = cartService.cartItems.map((coffee) => DataItemDetail(
@@ -23,7 +31,7 @@ class _CartScreenState extends State<CartScreen> {
       image: coffee.image,
       description: coffee.description,
       price: coffee.price,
-      isfav: false, // assuming all cart items are not marked as favorite
+      isfav: false,
     )).toList();
 
     double subTotal = cartItems.fold(0, (sum, item) => sum + item.price);
@@ -63,7 +71,7 @@ class _CartScreenState extends State<CartScreen> {
                   return Column(
                     children: [
                       const SizedBox(height: 20),
-                      CartItem(index: index, item: cartItems[index]),
+                      CartItem(index: index, item: cartItems[index], onRemoveItem: handleRemoveItem),
                     ],
                   );
                 },

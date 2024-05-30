@@ -1,5 +1,6 @@
 import 'package:coffee_shop/Models/coffeemodel.dart';
 import 'package:coffee_shop/Models/colddrinksmodel.dart';
+import 'package:coffee_shop/UI_Elements/dataitem.dart';
 
 class CartService {
   List<CoffeeModel> cartItems = [];
@@ -10,7 +11,7 @@ class CartService {
     cartItems.add(item);
   }
 
-  void removeItem(CoffeeModel item) {
+  void removeItem(DataItemDetail item) {
     cartItems.remove(item);
   }
 
@@ -28,7 +29,7 @@ class CartServiceCold {
     cartItems.add(item);
   }
 
-  void removeItem(CoffeeModel item) {
+  void removeItem(ColdDrinkModel item) {
     cartItems.remove(item);
   }
 

@@ -1,16 +1,18 @@
 import 'package:bootstrap_icons/bootstrap_icons.dart';
-import 'package:coffee_shop/UI_Elements/dataitem.dart';
+import 'package:coffee_shop/Services/cartservice.dart'; // Replace with your cart service
+import 'package:coffee_shop/UI_Elements/dataitem.dart'; // Replace with your data item model
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CartItem extends StatefulWidget {
   final int index;
   final DataItemDetail item;
+  final Function(DataItemDetail) onRemoveItem; // Callback for removal
 
-  const CartItem({super.key, required this.index, required this.item});
+  const CartItem({super.key, required this.index, required this.item, required this.onRemoveItem});
 
   @override
-  State<CartItem> createState() => _CartItemState();
+  _CartItemState createState() => _CartItemState();
 }
 
 class _CartItemState extends State<CartItem> {
@@ -35,7 +37,7 @@ class _CartItemState extends State<CartItem> {
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(widget.item.image),
+                    image: NetworkImage(widget.item.image), // Replace with your image property
                   ),
                 ),
                 width: 100,
@@ -47,7 +49,7 @@ class _CartItemState extends State<CartItem> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.item.title,
+                      widget.item.title, // Replace with your title property
                       style: GoogleFonts.sourceSans3(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
@@ -56,7 +58,7 @@ class _CartItemState extends State<CartItem> {
                     ),
                     const SizedBox(height: 25),
                     Text(
-                      '\$${widget.item.price}',
+                      '\$${widget.item.price}', // Replace with your price property
                       style: GoogleFonts.sourceSans3(
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
@@ -150,6 +152,35 @@ class _CartItemState extends State<CartItem> {
               ),
               child: Icon(
                 _isFilled ? BootstrapIcons.heart_fill : BootstrapIcons.heart,
+                size: 20,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          bottom: 10,
+          right: 80,
+          child: GestureDetector(
+            onTap: () {
+              // Trigger callback for removal
+              widget.onRemoveItem(widget.item);
+
+              // Show snackbar (optional)
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Removed from cart'),
+                ),
+              );
+            },
+            child: Container(
+              height: 30,
+              width: 30,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: const Icon(
+                BootstrapIcons.trash,
                 size: 20,
                 color: Colors.black,
               ),
