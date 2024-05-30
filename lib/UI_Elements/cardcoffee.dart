@@ -1,5 +1,6 @@
 import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:coffee_shop/Models/coffeemodel.dart';
+import 'package:coffee_shop/Services/cartservice.dart';
 import 'package:coffee_shop/Services/database_service.dart';
 import 'package:coffee_shop/UI_Elements/detailspopupcoffee.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +60,7 @@ class CardCoffee extends StatelessWidget {
                                     showDialog(
                                       context: context,
                                       builder: (BuildContext context) {
-                                        return DetailsPopup(item: coffee, id: coffeeid,);
+                                        return DetailsPopup(item: coffee, id: coffeeid);
                                       },
                                     );
                                   },
@@ -115,9 +116,7 @@ class CardCoffee extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                const SizedBox(
-                                  height: 25,
-                                ),
+                                const SizedBox(height: 25),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
@@ -134,7 +133,12 @@ class CardCoffee extends StatelessWidget {
                                         ),
                                         GestureDetector(
                                           onTap: () {
-                                            // Add your onTap functionality here
+                                            cartService.addItem(coffee); // Add item to cart
+                                            ScaffoldMessenger.of(context).showSnackBar(
+                                              SnackBar(
+                                                content: Text('${coffee.name} added to cart'),
+                                              ),
+                                            );
                                           },
                                           child: Container(
                                             margin: const EdgeInsets.only(right: 10, bottom: 10),

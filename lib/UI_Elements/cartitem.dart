@@ -15,9 +15,8 @@ class CartItem extends StatefulWidget {
 
 class _CartItemState extends State<CartItem> {
   bool _isFilled = false;
-  int noOfCups = 0;
-  bool isLoading = false;
-  
+  int noOfCups = 1;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -36,7 +35,7 @@ class _CartItemState extends State<CartItem> {
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage(widget.item.image),
+                    image: NetworkImage(widget.item.image),
                   ),
                 ),
                 width: 100,
@@ -74,75 +73,64 @@ class _CartItemState extends State<CartItem> {
           bottom: 5,
           top: 5,
           right: 10,
-          child: GestureDetector(
-            onTap: () {},
-            child: Container(
-              height: 90,
-              width: 30,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: const Color(0xFFD6975D),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    noOfCups++;
+                  });
+                },
+                child: Container(
+                  width: 30,
+                  height: 30,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: const Color.fromARGB(255, 176, 124, 76),
+                  ),
+                  child: const Icon(
+                    BootstrapIcons.plus,
+                    size: 20,
+                    color: Colors.white,
+                  ),
+                ),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        noOfCups++;
-                      });
-                    },
-                    child: Container(
-                      width: 30,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: const Color.fromARGB(255, 176, 124, 76),
-                      ),
-                      child: const Icon(
-                        BootstrapIcons.plus,
-                        size: 20,
-                        color: Colors.white,
-                      ),
+              SizedBox(
+                width: 30,
+                height: 30,
+                child: Center(
+                  child: Text(
+                    '$noOfCups',
+                    style: GoogleFonts.sourceSans3(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
                     ),
                   ),
-                  SizedBox(
-                    width: 30,
-                    height: 30,
-                    child: Center(
-                      child: Text(
-                        '$noOfCups',
-                        style: GoogleFonts.sourceSans3(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        if (noOfCups > 0) noOfCups--;
-                      });
-                    },
-                    child: Container(
-                      width: 30,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: const Color.fromARGB(255, 176, 124, 76),
-                      ),
-                      child: const Icon(
-                        BootstrapIcons.dash,
-                        size: 20,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    if (noOfCups > 0) noOfCups--;
+                  });
+                },
+                child: Container(
+                  width: 30,
+                  height: 30,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: const Color.fromARGB(255, 176, 124, 76),
+                  ),
+                  child: const Icon(
+                    BootstrapIcons.dash,
+                    size: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
         Positioned(
@@ -169,6 +157,6 @@ class _CartItemState extends State<CartItem> {
           ),
         ),
       ],
-    );  
+    );
   }
 }

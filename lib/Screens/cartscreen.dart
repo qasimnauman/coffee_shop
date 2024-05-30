@@ -1,4 +1,5 @@
 import 'package:coffee_shop/Screens/review.dart';
+import 'package:coffee_shop/Services/cartservice.dart';
 import 'package:coffee_shop/UI_Elements/cartitem.dart';
 import 'package:coffee_shop/UI_Elements/dataitem.dart';
 import 'package:flutter/material.dart';
@@ -14,27 +15,19 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   int noOfCups = 0;
   bool isLoading = false;
-  final List<DataItemDetail> favItemslist = [
-  DataItemDetail(
-    title: 'Latte',
-    color: Colors.brown[200]!,
-    image: 'lib/assets/images/Lattee.jpg',
-    description:
-        'A latte is a coffee drink made with espresso and steamed milk. The word "latte" is derived from the Italian caffè e latte, which means "coffee and milk".',
-    price: '6.5',
-  ),
-  DataItemDetail(
-    title: 'Iced Latte',
-    color: Colors.blue[100]!,
-    image: 'lib/assets/images/Iced_Latte.jpg',
-    description:
-        'An iced latte is a cold coffee drink made with espresso and milk. The difference from a regular latte is that it is served over ice.',
-    price: '7.2',
-  ),
-];
 
   @override
   Widget build(BuildContext context) {
+    List<DataItemDetail> cartItems = cartService.cartItems.map((coffee) => DataItemDetail(
+      title: coffee.name,
+      image: coffee.image,
+      description: coffee.description,
+      price: coffee.price,
+      isfav: false, // assuming all cart items are not marked as favorite
+    )).toList();
+
+    double subTotal = cartItems.fold(0, (sum, item) => sum + item.price);
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -65,14 +58,12 @@ class _CartScreenState extends State<CartScreen> {
               ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: favItemslist.length,
+                itemCount: cartItems.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Column(
                     children: [
                       const SizedBox(height: 20),
-                      CartItem(index: index,
-                      item: favItemslist[index]
-                      ),
+                      CartItem(index: index, item: cartItems[index]),
                     ],
                   );
                 },
@@ -90,7 +81,7 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   ),
                   Text(
-                    '2',
+                    '${cartItems.length}',
                     style: GoogleFonts.sourceSans3(
                       fontSize: 20,
                       color: Colors.black,
@@ -111,7 +102,7 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   ),
                   Text(
-                    '\$13.7',
+                    '\$$subTotal',
                     style: GoogleFonts.sourceSans3(
                       fontSize: 20,
                       color: Colors.black,
