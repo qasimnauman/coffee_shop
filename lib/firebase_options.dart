@@ -41,7 +41,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDroygvB1pp7hLaOfcBClaw73eJ4syPrmk',
+    apiKey: '',
     appId: '1:852951479768:web:57bcf90ae633adcce06ead',
     messagingSenderId: '852951479768',
     projectId: 'coffee-shop-164db',
@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBHWATg1r2pg9gOn5FVsVD_TZOC7Qb0JT8',
+    apiKey: '',
     appId: '1:852951479768:android:196b4d748fc9ee00e06ead',
     messagingSenderId: '852951479768',
     projectId: 'coffee-shop-164db',
@@ -59,7 +59,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCq7y_N7uB2HcS-xJn5IExaUkY1_CVSDw4',
+    apiKey: '',
     appId: '1:852951479768:ios:1f13b5dc28623053e06ead',
     messagingSenderId: '852951479768',
     projectId: 'coffee-shop-164db',
@@ -68,7 +68,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCq7y_N7uB2HcS-xJn5IExaUkY1_CVSDw4',
+    apiKey: '',
     appId: '1:852951479768:ios:1f13b5dc28623053e06ead',
     messagingSenderId: '852951479768',
     projectId: 'coffee-shop-164db',
@@ -77,7 +77,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyDroygvB1pp7hLaOfcBClaw73eJ4syPrmk',
+    apiKey: '',
     appId: '1:852951479768:web:72f3880b6a5efb7be06ead',
     messagingSenderId: '852951479768',
     projectId: 'coffee-shop-164db',
