@@ -2,6 +2,11 @@
 
 Welcome to the Coffee Shop App, designed for seamless coffee ordering from your comfort place
 
+The Link to the UI is below and is owned by the respective owner.
+   ```bash
+   https://www.figma.com/design/sfIlQOvm60djOR477CV58v/Untitled?node-id=0-1
+   ```
+
 ## Table of Contents
 
 1. [Technologies Used](#technologies-used)
