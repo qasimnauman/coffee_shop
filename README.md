@@ -1,20 +1,41 @@
-<<<<<<< HEAD
-# coffee_shop
-=======
-# coffee_shop
+# Coffee Shop App
 
-A new Flutter project.
+Welcome to the Coffee Shop App, designed for seamless coffee ordering from your comfort place
+
+## Table of Contents
+
+1. [Technologies Used](#technologies-used)
+2. [Getting Started and Running the Project](#getting-started)
+2. [Flutter Documentation](#flutterdocs)
+3. [License](#license)
+
+## Technologies Used
+
+- **Flutter** for the development of the Application
+- **Dart** programming language which serves as the backbone of Flutter
+- **Firebase** for the secure authentication of the users, and effective data storage and retrieval
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To start working with Khata, follow these steps:
 
-A few resources to get you started if this is your first Flutter project:
+1. Clone the repository to your local machine:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+   ```bash
+   git clone https://github.com/qasimnauman/coffee_shop.git
+   ```
+2. **Requirements**
+  1. **Flutter SDK**
+  3. **Git (2.4.3 above)**
+  3. **Android Studio or VS Code**
+  3. **An Android emulator or device for better experience**
+3. Open the `main.dart` file in the lib folder in the project folder, choose your respective device and then it will launch.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
->>>>>>> 9e65ecf (Added All Files)
+## flutterdocs
+
+For Flutter docs you can visit [Documentation](https://docs.flutter.dev/)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
