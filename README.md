@@ -12,8 +12,8 @@ Welcome to the Coffee Shop App, designed for seamless coffee ordering from your 
 ## Technologies Used
 
 - **Flutter** for the development of the Application
-- **Dart** programming language which serves as the backbone of Flutter
-- **Firebase** for the secure authentication of the users, and effective data storage and retrieval
+- **Dart** programming lanuage which serves as the backbone of flutter
+- **Firebase** for the secure authentication of the users, and effective data storage and retrival
 
 ## Getting Started
 
@@ -25,10 +25,11 @@ To start working with Khata, follow these steps:
    git clone https://github.com/qasimnauman/coffee_shop.git
    ```
 2. **Requirements**
-  1. **Flutter SDK**
-  3. **Git (2.4.3 above)**
-  3. **Android Studio or VS Code**
-  3. **An Android emulator or device for better experience**
+  - **Flutter SDK**
+  - **Git (2.4.3 above)**
+  - **Android Studio or VS Code**
+  - **An Android emulator or device for better experience**
+  
 3. Open the `main.dart` file in the lib folder in the project folder, choose your respective device and then it will launch.
 
 ## flutterdocs
