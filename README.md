@@ -12,8 +12,8 @@ Welcome to the Coffee Shop App, designed for seamless coffee ordering from your 
 ## Technologies Used
 
 - **Flutter** for the development of the Application
-- **Dart** programming lanuage which serves as the backbone of flutter
-- **Firebase** for the secure authentication of the users, and effective data storage and retrival
+- **Dart** programming language which serves as the backbone of Flutter
+- **Firebase** for the secure authentication of the users, and effective data storage and retrieval
 
 ## Getting Started
 
